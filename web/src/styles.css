@@ -1,0 +1,456 @@
+/* Dividendii Investments, screen styles.
+ *
+ * Colours, type, radii and shadows all come from brand-tokens.css, which is
+ * the file shipped in the brand pack. Nothing here invents a colour.
+ *
+ * Two brand rules this file keeps to:
+ *   - gold is never text on white or on blue (it fails contrast). It is used
+ *     for the icon, for fills and for focus rings.
+ *   - money and quantities are tabular and right-aligned.
+ */
+
+@import './brand-tokens.css';
+
+:root {
+  --blue: var(--dividendii-blue);
+  --gold: var(--dividendii-gold);
+  --ink: var(--dividendii-ink);
+  --text: var(--dividendii-text);
+  --muted: var(--dividendii-text-secondary);
+  --line: var(--dividendii-border);
+  --panel: var(--dividendii-neutral-100);
+  --paper: var(--dividendii-neutral-50);
+  --card: #fff;
+  --good: var(--dividendii-success);
+  --good-bg: var(--dividendii-success-bg);
+  --warn: var(--dividendii-warning);
+  --warn-bg: var(--dividendii-warning-bg);
+  --bad: var(--dividendii-error);
+  --bad-bg: var(--dividendii-error-bg);
+  --radius: var(--dividendii-radius-lg);
+  --shadow: var(--dividendii-shadow-sm);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--dividendii-font);
+  background: var(--paper);
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+h1 { font-size: 24px; }
+h2 { font-size: 18px; }
+h3 { font-size: 15px; }
+p { margin: 0; }
+
+a {
+  color: var(--blue);
+  text-decoration: none;
+}
+a:hover { text-decoration: underline; }
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+.muted { color: var(--muted); }
+.small { font-size: 13px; }
+.xs { font-size: 12px; }
+.num {
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+.up { color: var(--good); }
+.dn { color: var(--bad); }
+.sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ---------------------------------------------------------------- buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 18px;
+  border: 1px solid transparent;
+  border-radius: var(--dividendii-radius-md);
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background var(--dividendii-duration) var(--dividendii-ease);
+}
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.btn-primary {
+  background: var(--blue);
+  color: #fff;
+}
+.btn-primary:hover:not(:disabled) { background: var(--ink); }
+.btn-gold {
+  background: var(--gold);
+  color: var(--ink);
+}
+.btn-gold:hover:not(:disabled) { background: #b08c45; }
+.btn-outline {
+  background: #fff;
+  color: var(--blue);
+  border-color: var(--blue);
+}
+.btn-outline:hover:not(:disabled) { background: var(--dividendii-info-bg); }
+.btn-quiet {
+  background: transparent;
+  color: var(--muted);
+  border-color: var(--line);
+}
+.btn-danger {
+  background: #fff;
+  color: var(--bad);
+  border-color: var(--bad);
+}
+.btn-sm {
+  min-height: 34px;
+  padding: 0 12px;
+  font-size: 13px;
+}
+.btn-block { width: 100%; }
+.linkbtn {
+  background: none;
+  border: 0;
+  padding: 6px 0;
+  color: var(--blue);
+  font-size: 14px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* ------------------------------------------------------------------ cards */
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+}
+.card.flush { padding: 0; overflow: hidden; }
+.card.ink {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #fff;
+}
+.card.ink .muted { color: #b7c4d1; }
+.card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--line);
+}
+.card-body { padding: 20px; }
+
+.stack { display: flex; flex-direction: column; gap: 20px; }
+.stack-sm { display: flex; flex-direction: column; gap: 10px; }
+.grid { display: grid; gap: 16px; }
+.g2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.g3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.g4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.split { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 20px; align-items: start; }
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+.wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+.kv {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 14px;
+  padding: 6px 0;
+}
+.kv.total {
+  border-top: 1px solid var(--line);
+  margin-top: 6px;
+  padding-top: 10px;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+@media (max-width: 1000px) {
+  .split { grid-template-columns: minmax(0, 1fr); }
+  .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .g3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 680px) {
+  .g2, .g3, .g4 { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ------------------------------------------------------------------ pills */
+.pill {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: var(--dividendii-radius-pill);
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.pill-good { background: var(--good-bg); color: var(--good); }
+.pill-warn { background: var(--warn-bg); color: var(--warn); }
+.pill-bad { background: var(--bad-bg); color: var(--bad); }
+.pill-info { background: var(--dividendii-info-bg); color: var(--dividendii-info); }
+.pill-quiet { background: var(--panel); color: var(--muted); }
+
+/* ------------------------------------------------------------------ forms */
+.field { display: block; margin-bottom: 14px; }
+.field > span {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+.field .hint {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 400;
+  margin-top: 4px;
+}
+input[type='text'],
+input[type='email'],
+input[type='number'],
+input[type='date'],
+input[type='tel'],
+select,
+textarea {
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 12px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--dividendii-radius-md);
+}
+input[type='file'] {
+  width: 100%;
+  padding: 10px;
+  background: var(--panel);
+  border: 1px dashed var(--line);
+  border-radius: var(--dividendii-radius-md);
+}
+textarea { min-height: 80px; resize: vertical; }
+input:disabled, select:disabled { background: var(--panel); color: var(--muted); }
+.code-input {
+  font-size: 28px;
+  letter-spacing: 10px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+.seg {
+  display: inline-flex;
+  background: var(--panel);
+  border-radius: var(--dividendii-radius-md);
+  padding: 3px;
+  gap: 3px;
+}
+.seg button {
+  border: 0;
+  background: transparent;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  color: var(--muted);
+}
+.seg button[aria-pressed='true'] {
+  background: #fff;
+  color: var(--ink);
+  box-shadow: var(--shadow);
+}
+
+/* ----------------------------------------------------------------- tables */
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th {
+  text-align: left;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--line);
+  background: var(--paper);
+}
+td { padding: 12px 16px; border-bottom: 1px solid var(--line); }
+tbody tr:last-child td { border-bottom: 0; }
+tbody tr.clickable { cursor: pointer; }
+tbody tr.clickable:hover { background: var(--dividendii-info-bg); }
+th.num, td.num { text-align: right; }
+
+/* ------------------------------------------------------------------ shell */
+.shell { min-height: 100vh; display: flex; flex-direction: column; }
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 24px;
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+.topbar img { height: 28px; width: auto; display: block; }
+.nav { display: flex; gap: 2px; flex-wrap: wrap; }
+.nav a {
+  padding: 8px 12px;
+  border-radius: var(--dividendii-radius-md);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--muted);
+}
+.nav a:hover { background: var(--panel); text-decoration: none; }
+.nav a.active { background: var(--dividendii-info-bg); color: var(--blue); }
+.main { flex: 1; width: 100%; max-width: 1180px; margin: 0 auto; padding: 24px; }
+.page-head { margin-bottom: 20px; }
+.page-head p { color: var(--muted); margin-top: 4px; }
+
+/* ----------------------------------------------------------------- notices */
+.notice {
+  display: flex;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: var(--dividendii-radius-md);
+  font-size: 14px;
+  border: 1px solid transparent;
+}
+.notice-info { background: var(--dividendii-info-bg); border-color: #cddbe8; }
+.notice-warn { background: var(--warn-bg); border-color: #ecd9b0; }
+.notice-bad { background: var(--bad-bg); border-color: #f0cdc9; }
+.notice-good { background: var(--good-bg); border-color: #bfe0cd; }
+.notice strong { display: block; margin-bottom: 2px; }
+
+.sample-banner {
+  background: var(--ink);
+  color: #fff;
+  font-size: 13px;
+  padding: 8px 24px;
+  text-align: center;
+}
+.sample-banner strong { color: var(--dividendii-gold-light); }
+
+/* ------------------------------------------------------------- disclosures */
+.disclosure-text {
+  max-height: 260px;
+  overflow-y: auto;
+  padding: 16px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--dividendii-radius-md);
+  font-size: 14px;
+  white-space: pre-wrap;
+}
+
+.check {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 14px;
+  padding: 10px 0;
+  cursor: pointer;
+}
+.check input { margin-top: 3px; width: 18px; height: 18px; flex: none; }
+
+/* ------------------------------------------------------------------ chart */
+.spark { display: block; width: 100%; height: 72px; }
+
+/* ----------------------------------------------------------------- loading */
+.skeleton {
+  background: linear-gradient(90deg, var(--panel) 25%, var(--dividendii-neutral-200) 50%, var(--panel) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+  border-radius: 6px;
+  height: 14px;
+}
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .skeleton { animation: none; }
+}
+
+.empty {
+  text-align: center;
+  padding: 36px 20px;
+  color: var(--muted);
+}
+.empty h3 { color: var(--text); margin-bottom: 6px; }
+
+.steps { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+.steps li {
+  list-style: none;
+  font-size: 13px;
+  padding: 6px 12px;
+  border-radius: var(--dividendii-radius-pill);
+  background: var(--panel);
+  color: var(--muted);
+}
+.steps li[aria-current='step'] { background: var(--blue); color: #fff; }
+.steps li.done { background: var(--good-bg); color: var(--good); }
+
+.auth-wrap {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: var(--ink);
+}
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  background: #fff;
+  border-radius: var(--radius);
+  padding: 32px;
+  box-shadow: var(--dividendii-shadow-md);
+}
+.auth-card img { height: 32px; margin-bottom: 24px; }

@@ -1,0 +1,80 @@
+:root {
+  --dividendii-blue: #295D8F;
+  --dividendii-gold: #C59F56;
+  --dividendii-ink: #17375A;
+  --dividendii-white: #FFFFFF;
+  --dividendii-gold-light: #E8D8B8;
+  --dividendii-blue-50: #94AEC7;
+  --dividendii-neutral-0: #FFFFFF;
+  --dividendii-neutral-50: #F6F8FA;
+  --dividendii-neutral-100: #EEF1F4;
+  --dividendii-neutral-200: #DCE5EE;
+  --dividendii-neutral-300: #C3CFDB;
+  --dividendii-neutral-400: #94A3B3;
+  --dividendii-neutral-500: #6F7E8E;
+  --dividendii-neutral-600: #5C6B7A;
+  --dividendii-neutral-700: #435161;
+  --dividendii-neutral-800: #2B3846;
+  --dividendii-neutral-900: #18222D;
+  --dividendii-success: #1E7A4C;
+  --dividendii-success-bg: #E6F3EC;
+  --dividendii-warning: #9A5B00;
+  --dividendii-warning-bg: #FBF0DD;
+  --dividendii-error: #B42318;
+  --dividendii-error-bg: #FBE9E7;
+  --dividendii-info: #295D8F;
+  --dividendii-info-bg: #E9EFF4;
+  --dividendii-neutral: #5C6B7A;
+  --dividendii-neutral-bg: #EEF1F4;
+  --dividendii-status-not-started: #5C6B7A;
+  --dividendii-status-not-started-bg: #EEF1F4;
+  --dividendii-status-searching: #295D8F;
+  --dividendii-status-searching-bg: #E9EFF4;
+  --dividendii-status-action-needed: #9A5B00;
+  --dividendii-status-action-needed-bg: #FBF0DD;
+  --dividendii-status-submitted: #295D8F;
+  --dividendii-status-submitted-bg: #E9EFF4;
+  --dividendii-status-verified: #17375A;
+  --dividendii-status-verified-bg: #DCE5EE;
+  --dividendii-status-paid: #1E7A4C;
+  --dividendii-status-paid-bg: #E6F3EC;
+  --dividendii-status-rejected: #B42318;
+  --dividendii-status-rejected-bg: #FBE9E7;
+  --dividendii-status-expired: #435161;
+  --dividendii-status-expired-bg: #DCE5EE;
+  --dividendii-chart-1: #295D8F;
+  --dividendii-chart-2: #C59F56;
+  --dividendii-chart-3: #17375A;
+  --dividendii-chart-4: #94AEC7;
+  --dividendii-chart-5: #6E8B5A;
+  --dividendii-chart-6: #B5654A;
+  --dividendii-text: #17375A;
+  --dividendii-text-secondary: #5C6B7A;
+  --dividendii-border: #DCE5EE;
+  --dividendii-scrim: rgba(23,55,90,0.60);
+  --dividendii-font: 'Space Grotesk', Arial, Helvetica, sans-serif;
+  --dividendii-radius-sm: 4px; --dividendii-radius-md: 8px; --dividendii-radius-lg: 12px; --dividendii-radius-pill: 999px;
+  --dividendii-shadow-sm: 0 1px 2px rgba(23,55,90,0.08);
+  --dividendii-shadow-md: 0 4px 12px rgba(23,55,90,0.10);
+  --dividendii-ease: cubic-bezier(0.2, 0, 0, 1); --dividendii-duration: 200ms;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --dividendii-dark-bg: #0E1A28;
+    --dividendii-dark-surface: #162536;
+    --dividendii-dark-surface-raised: #1E3046;
+    --dividendii-dark-border: #2B3D53;
+    --dividendii-dark-text: #F6F8FA;
+    --dividendii-dark-text-secondary: #B7C4D1;
+    --dividendii-dark-accent: #C59F56;
+    --dividendii-dark-link: #94AEC7;
+  }
+}
+
+@font-face { font-family: 'Space Grotesk'; font-weight: 400; font-display: swap; src: url('/fonts/SpaceGrotesk-Regular.woff2') format('woff2'); }
+@font-face { font-family: 'Space Grotesk'; font-weight: 500; font-display: swap; src: url('/fonts/SpaceGrotesk-Medium.woff2') format('woff2'); }
+@font-face { font-family: 'Space Grotesk'; font-weight: 700; font-display: swap; src: url('/fonts/SpaceGrotesk-Bold.woff2') format('woff2'); }
+
+.dividendii-amount { font-variant-numeric: tabular-nums; text-align: right; }
+@media (prefers-reduced-motion: reduce) { * { animation-duration: 1ms !important; transition-duration: 120ms !important; } }
